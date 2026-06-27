@@ -1,9 +1,10 @@
 import { useState, useMemo } from "react";
 import { placeOrder } from "../api";
+import cartIcon from "../shoppingcart.png";
 
 const PAGE_SIZE = 24;
 
-function ProductModal({ product, onClose, onBuy, buying }) {
+function ProductModal({ product, onClose, onBuy, buying, onAddToCart, cartQty }) {
   return (
     <div className="modal-backdrop" onClick={onClose}>
       <div className="modal" onClick={(e) => e.stopPropagation()}>
@@ -17,23 +18,33 @@ function ProductModal({ product, onClose, onBuy, buying }) {
         <p className="product-stock">Stock: {product.stockQuantity}</p>
         <button
           className="modal-buy"
+          onClick={() => onAddToCart(product)}
+          disabled={product.stockQuantity === 0}
+        >
+          {product.stockQuantity === 0
+            ? "Out of Stock"
+            : cartQty > 0
+            ? `Add to Cart (${cartQty} in cart)`
+            : "Add to Cart"}
+        </button>
+        <button
+          className="modal-buy modal-buy--secondary"
           onClick={() => onBuy(product.id)}
           disabled={buying === product.id || product.stockQuantity === 0}
         >
-          {buying === product.id ? "Ordering..." : product.stockQuantity === 0 ? "Out of Stock" : "Buy"}
+          {buying === product.id ? "Ordering..." : "Buy Now"}
         </button>
       </div>
     </div>
   );
 }
 
-export default function MarketplacePage({ selectedUserId, products, users, refetch }) {
+export default function MarketplacePage({ selectedUserId, products, users, refetch, onAddToCart, cartMap, cartCount, onCartOpen }) {
   const [buying, setBuying]                   = useState(null);
   const [expanded, setExpanded]               = useState(null);
   const [activeCategory, setActiveCategory]   = useState("All");
   const [page, setPage]                       = useState(1);
 
-  // Group products by category once — O(n) instead of repeated filters
   const byCategory = useMemo(() =>
     products.reduce((map, p) => {
       const key = p.category ?? "Uncategorized";
@@ -78,6 +89,10 @@ export default function MarketplacePage({ selectedUserId, products, users, refet
 
   return (
     <div className="marketplace-layout">
+      <button className="cart-float-btn" onClick={onCartOpen} aria-label="Open cart">
+        <img src={cartIcon} alt="Cart" />
+        {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
+      </button>
       <aside className="category-sidebar">
         <h3>Categories</h3>
         <ul>
@@ -103,28 +118,35 @@ export default function MarketplacePage({ selectedUserId, products, users, refet
           <p className="stock-summary">{inStock} of {visible.length} products in stock</p>
 
           <div className="product-grid">
-            {page_items.map((p) => (
-              <div
-                key={p.id}
-                className="product-card"
-                onClick={() => setExpanded(p)}
-                style={{ cursor: "pointer" }}
-              >
-                {p.imageUrl && (
-                  <img src={p.imageUrl} alt={p.name} className="product-image" loading="lazy" />
-                )}
-                <h3>{p.name}</h3>
-                {p.description && <p className="product-description">{p.description}</p>}
-                <p className="product-price">${p.price}</p>
-                <p className="product-stock">Stock: {p.stockQuantity}</p>
-                <button
-                  onClick={(e) => { e.stopPropagation(); handleBuy(p.id); }}
-                  disabled={buying === p.id || p.stockQuantity === 0}
+            {page_items.map((p) => {
+              const cartQty = cartMap?.get(p.id) ?? 0;
+              return (
+                <div
+                  key={p.id}
+                  className="product-card"
+                  onClick={() => setExpanded(p)}
+                  style={{ cursor: "pointer" }}
                 >
-                  {buying === p.id ? "Ordering..." : p.stockQuantity === 0 ? "Out of Stock" : "Buy"}
-                </button>
-              </div>
-            ))}
+                  {p.imageUrl && (
+                    <img src={p.imageUrl} alt={p.name} className="product-image" loading="lazy" />
+                  )}
+                  <h3>{p.name}</h3>
+                  {p.description && <p className="product-description">{p.description}</p>}
+                  <p className="product-price">${p.price}</p>
+                  <p className="product-stock">Stock: {p.stockQuantity}</p>
+                  <button
+                    onClick={(e) => { e.stopPropagation(); onAddToCart(p); }}
+                    disabled={p.stockQuantity === 0}
+                  >
+                    {p.stockQuantity === 0
+                      ? "Out of Stock"
+                      : cartQty > 0
+                      ? `In Cart (${cartQty})`
+                      : "Add to Cart"}
+                  </button>
+                </div>
+              );
+            })}
           </div>
 
           {totalPages > 1 && (
@@ -155,6 +177,8 @@ export default function MarketplacePage({ selectedUserId, products, users, refet
           onClose={() => setExpanded(null)}
           onBuy={handleBuy}
           buying={buying}
+          onAddToCart={onAddToCart}
+          cartQty={cartMap?.get(expandedProduct.id) ?? 0}
         />
       )}
     </div>

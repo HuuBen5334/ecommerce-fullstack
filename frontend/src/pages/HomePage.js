@@ -17,7 +17,7 @@ const STEPS = [
     description:
       "Head to the Marketplace to see all available products. Use the category sidebar to filter by type, and click any product card to view details or buy manually.",
     link: "/marketplace",
-    linkLabel: "Go to Marketplace →",
+    linkLabel: "Go to Marketplace",
   },
   {
     number: "2",
@@ -37,7 +37,7 @@ const STEPS = [
     description:
       "Open the Orders page while the simulation is running. The right column shows a live notification feed pushed over WebSocket as each order changes status: Pending → Confirmed → Shipped → Delivered.",
     link: "/orders",
-    linkLabel: "Go to Orders →",
+    linkLabel: "Go to Orders",
   },
   {
     number: "5",
@@ -45,7 +45,7 @@ const STEPS = [
     description:
       "When products sell out the simulation stops automatically. Go to the Products page to replenish any out-of-stock item back to 100 units, then resume.",
     link: "/products",
-    linkLabel: "Go to Products →",
+    linkLabel: "Go to Products",
   },
 ];
 

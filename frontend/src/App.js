@@ -1,30 +1,39 @@
-import { lazy, Suspense, useState, useEffect, useRef, useMemo } from "react";
+import { lazy, Suspense, useState, useCallback, useEffect, useRef, useMemo } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { useFetch } from "./useFetch";
 import { placeOrder } from "./api";
+import CartDrawer from "./CartDrawer";
 import "./App.css";
 
-const HomePage      = lazy(() => import("./pages/HomePage"));
-const ProductsPage  = lazy(() => import("./pages/ProductsPage"));
-const UsersPage     = lazy(() => import("./pages/UsersPage"));
-const OrdersPage    = lazy(() => import("./pages/OrdersPage"));
+const HomePage        = lazy(() => import("./pages/HomePage"));
+const ProductsPage    = lazy(() => import("./pages/ProductsPage"));
+const UsersPage       = lazy(() => import("./pages/UsersPage"));
+const OrdersPage      = lazy(() => import("./pages/OrdersPage"));
 const MarketplacePage = lazy(() => import("./pages/MarketplacePage"));
 
 export default function App() {
   const [selectedUserId, setSelectedUserId] = useState(1);
   const [simulating, setSimulating]         = useState(false);
   const [speed, setSpeed]                   = useState(1000);
+  const [cart, setCart]                     = useState([]);
+  const [cartOpen, setCartOpen]             = useState(false);
+  const [checking, setChecking]             = useState(false);
 
-  const { data: products, refetch }              = useFetch("/products");
-  const { data: users,    refetch: refetchUsers } = useFetch("/users");
+  const { data: products, refetch }               = useFetch("/products");
+  const { data: users,    refetch: refetchUsers }  = useFetch("/users");
   const { data: orders,   refetch: refetchOrders } = useFetch("/orders");
   const productsRef = useRef(products);
   const usersRef    = useRef(users);
 
-  // O(1) user lookup by id — shared across all pages
   const usersMap = useMemo(() =>
     new Map(users.map((u) => [u.id, u])),
   [users]);
+
+  const cartMap = useMemo(() =>
+    new Map(cart.map((i) => [i.product.id, i.qty])),
+  [cart]);
+
+  const cartCount = useMemo(() => cart.reduce((n, i) => n + i.qty, 0), [cart]);
 
   useEffect(() => { productsRef.current = products; }, [products]);
   useEffect(() => { usersRef.current    = users; },    [users]);
@@ -51,6 +60,44 @@ export default function App() {
 
     return () => clearInterval(id);
   }, [simulating, speed, refetch, selectedUserId]);
+
+  const addToCart = useCallback((product) => {
+    setCart((prev) => {
+      const exists = prev.find((i) => i.product.id === product.id);
+      if (exists) return prev.map((i) => i.product.id === product.id ? { ...i, qty: i.qty + 1 } : i);
+      return [...prev, { product, qty: 1 }];
+    });
+  }, []);
+
+  const removeFromCart = useCallback((productId) => {
+    setCart((prev) => prev.filter((i) => i.product.id !== productId));
+  }, []);
+
+  const setCartQty = useCallback((productId, qty) => {
+    setCart((prev) => prev.map((i) => i.product.id === productId ? { ...i, qty } : i));
+  }, []);
+
+  async function checkout() {
+    if (cart.length === 0) return;
+    const resolvedUserId = selectedUserId === 0 && users.length > 0
+      ? users[Math.floor(Math.random() * users.length)].id
+      : selectedUserId;
+    if (!resolvedUserId) return;
+    setChecking(true);
+    try {
+      for (const item of cart) {
+        await placeOrder(item.product.id, resolvedUserId, item.qty);
+      }
+      setCart([]);
+      setCartOpen(false);
+      refetch();
+      refetchOrders();
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setChecking(false);
+    }
+  }
 
   return (
     <BrowserRouter>
@@ -91,6 +138,15 @@ export default function App() {
           <span className="speed-label">{speed}ms</span>
         </div>
       </header>
+      <CartDrawer
+        open={cartOpen}
+        onClose={() => setCartOpen(false)}
+        items={cart}
+        onRemove={removeFromCart}
+        onQtyChange={setCartQty}
+        onCheckout={checkout}
+        checking={checking}
+      />
       <Suspense fallback={<p>Loading...</p>}>
         <Routes>
           <Route path="/"           element={<HomePage products={products} users={users} orders={orders} />} />
@@ -103,6 +159,10 @@ export default function App() {
               products={products}
               users={users}
               refetch={refetch}
+              onAddToCart={addToCart}
+              cartMap={cartMap}
+              cartCount={cartCount}
+              onCartOpen={() => setCartOpen(true)}
             />}
           />
         </Routes>
