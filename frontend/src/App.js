@@ -64,7 +64,7 @@ export default function App() {
             className={`sim-btn ${simulating ? "sim-btn--active" : ""}`}
             onClick={() => setSimulating((s) => !s)}
           >
-            {simulating ? "■ Stop" : "▶ Simulate"}
+            {simulating ? "Stop" : "Simulate"}
           </button>
           <input
             type="range"

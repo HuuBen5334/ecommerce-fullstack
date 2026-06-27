@@ -62,7 +62,7 @@ public class ProductOrderService {
                         .setStockQuantity(savedProduct.getStockQuantity())
                         .build()
                 ).getComputedPrice()
-        );
+        ).setScale(2, java.math.RoundingMode.HALF_UP);
 
         // 5.
         User user = userRepository.findById(userId)
