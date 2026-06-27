@@ -1,4 +1,4 @@
-## Project Descrition
+## Project Description
 This is a full-stack e-commerce simulation. You can browse products, place orders manually, or run an automated simulation to stress-test the system in real time.
 - **Browse the Marketplace:** Head to the Marketplace to see all available products. Use the category sidebar to filter by type, and click any product card to view details or buy manually.
 
