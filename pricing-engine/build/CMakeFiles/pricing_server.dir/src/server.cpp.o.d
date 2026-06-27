@@ -1,6 +1,7 @@
 CMakeFiles/pricing_server.dir/src/server.cpp.o: \
- /mnt/c/Projects/pricing-engine/src/server.cpp /usr/include/stdc-predef.h \
- /usr/include/c++/15/iostream /usr/include/c++/15/bits/requires_hosted.h \
+ /mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/src/server.cpp \
+ /usr/include/stdc-predef.h /usr/include/c++/15/iostream \
+ /usr/include/c++/15/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/15/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/15/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -385,8 +386,8 @@ CMakeFiles/pricing_server.dir/src/server.cpp.o: \
  /usr/include/grpcpp/impl/server_builder_plugin.h \
  /usr/include/grpcpp/security/authorization_policy_provider.h \
  /usr/include/grpcpp/server_posix.h /usr/include/grpcpp/version_info.h \
- /mnt/c/Projects/pricing-engine/build/generated/pricing.grpc.pb.h \
- /mnt/c/Projects/pricing-engine/build/generated/pricing.pb.h \
+ /mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/build/generated/pricing.grpc.pb.h \
+ /mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/build/generated/pricing.pb.h \
  /usr/include/google/protobuf/port_def.inc \
  /usr/include/google/protobuf/port_undef.inc \
  /usr/include/google/protobuf/io/coded_stream.h \
@@ -464,4 +465,4 @@ CMakeFiles/pricing_server.dir/src/server.cpp.o: \
  /usr/include/grpcpp/support/proto_buffer_writer.h \
  /usr/include/grpcpp/impl/codegen/serialization_traits.h \
  /usr/include/grpcpp/support/stub_options.h \
- /mnt/c/Projects/pricing-engine/src/pricing_engine.h
+ /mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/src/pricing_engine.h

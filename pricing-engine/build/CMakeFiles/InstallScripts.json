@@ -1,7 +1,7 @@
 {
 	"InstallScripts" : 
 	[
-		"/mnt/c/Projects/pricing-engine/build/cmake_install.cmake"
+		"/mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/build/cmake_install.cmake"
 	],
 	"Parallel" : false
 }

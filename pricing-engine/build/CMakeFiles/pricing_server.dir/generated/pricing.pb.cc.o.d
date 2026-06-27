@@ -1,7 +1,7 @@
 CMakeFiles/pricing_server.dir/generated/pricing.pb.cc.o: \
- /mnt/c/Projects/pricing-engine/build/generated/pricing.pb.cc \
+ /mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/build/generated/pricing.pb.cc \
  /usr/include/stdc-predef.h \
- /mnt/c/Projects/pricing-engine/build/generated/pricing.pb.h \
+ /mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/build/generated/pricing.pb.h \
  /usr/include/c++/15/limits \
  /usr/include/x86_64-linux-gnu/c++/15/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/15/bits/os_defines.h \

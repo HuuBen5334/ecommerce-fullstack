@@ -14,9 +14,9 @@ const OrderRow = memo(function OrderRow({ order }) {
   );
 });
 
-export default function OrdersPage() {
+export default function OrdersPage({ selectedUserId = 1 }) {
     const { data: orders, error } = useFetch("/orders");
-    const notifications = useOrderNotifications(1);
+    const notifications = useOrderNotifications(selectedUserId);
     if (error) return <p>Error: {error}</p>;
   return (
     <div className="page">

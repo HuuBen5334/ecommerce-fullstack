@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /mnt/c/Projects/pricing-engine
+CMAKE_SOURCE_DIR = /mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /mnt/c/Projects/pricing-engine/build
+CMAKE_BINARY_DIR = /mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/pricing_server.dir/depend.make
@@ -69,9 +69,9 @@ include CMakeFiles/pricing_server.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/pricing_server.dir/flags.make
 
-generated/pricing.pb.cc: /mnt/c/Projects/pricing-engine/proto/pricing.proto
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/mnt/c/Projects/pricing-engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating protobuf + gRPC stubs from pricing.proto"
-	protoc --proto_path=/mnt/c/Projects/pricing-engine/proto --cpp_out=/mnt/c/Projects/pricing-engine/build/generated --grpc_out=/mnt/c/Projects/pricing-engine/build/generated --plugin=protoc-gen-grpc=/usr/bin/grpc_cpp_plugin /mnt/c/Projects/pricing-engine/proto/pricing.proto
+generated/pricing.pb.cc: /mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/proto/pricing.proto
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating protobuf + gRPC stubs from pricing.proto"
+	protoc --proto_path=/mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/proto --cpp_out=/mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/build/generated --grpc_out=/mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/build/generated --plugin=protoc-gen-grpc=/usr/bin/grpc_cpp_plugin /mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/proto/pricing.proto
 
 generated/pricing.pb.h: generated/pricing.pb.cc
 	@$(CMAKE_COMMAND) -E touch_nocreate generated/pricing.pb.h
@@ -86,60 +86,60 @@ CMakeFiles/pricing_server.dir/codegen:
 .PHONY : CMakeFiles/pricing_server.dir/codegen
 
 CMakeFiles/pricing_server.dir/src/server.cpp.o: CMakeFiles/pricing_server.dir/flags.make
-CMakeFiles/pricing_server.dir/src/server.cpp.o: /mnt/c/Projects/pricing-engine/src/server.cpp
+CMakeFiles/pricing_server.dir/src/server.cpp.o: /mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/src/server.cpp
 CMakeFiles/pricing_server.dir/src/server.cpp.o: CMakeFiles/pricing_server.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Projects/pricing-engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/pricing_server.dir/src/server.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pricing_server.dir/src/server.cpp.o -MF CMakeFiles/pricing_server.dir/src/server.cpp.o.d -o CMakeFiles/pricing_server.dir/src/server.cpp.o -c /mnt/c/Projects/pricing-engine/src/server.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/pricing_server.dir/src/server.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pricing_server.dir/src/server.cpp.o -MF CMakeFiles/pricing_server.dir/src/server.cpp.o.d -o CMakeFiles/pricing_server.dir/src/server.cpp.o -c /mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/src/server.cpp
 
 CMakeFiles/pricing_server.dir/src/server.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/pricing_server.dir/src/server.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Projects/pricing-engine/src/server.cpp > CMakeFiles/pricing_server.dir/src/server.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/src/server.cpp > CMakeFiles/pricing_server.dir/src/server.cpp.i
 
 CMakeFiles/pricing_server.dir/src/server.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/pricing_server.dir/src/server.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Projects/pricing-engine/src/server.cpp -o CMakeFiles/pricing_server.dir/src/server.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/src/server.cpp -o CMakeFiles/pricing_server.dir/src/server.cpp.s
 
 CMakeFiles/pricing_server.dir/src/pricing_engine.cpp.o: CMakeFiles/pricing_server.dir/flags.make
-CMakeFiles/pricing_server.dir/src/pricing_engine.cpp.o: /mnt/c/Projects/pricing-engine/src/pricing_engine.cpp
+CMakeFiles/pricing_server.dir/src/pricing_engine.cpp.o: /mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/src/pricing_engine.cpp
 CMakeFiles/pricing_server.dir/src/pricing_engine.cpp.o: CMakeFiles/pricing_server.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Projects/pricing-engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/pricing_server.dir/src/pricing_engine.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pricing_server.dir/src/pricing_engine.cpp.o -MF CMakeFiles/pricing_server.dir/src/pricing_engine.cpp.o.d -o CMakeFiles/pricing_server.dir/src/pricing_engine.cpp.o -c /mnt/c/Projects/pricing-engine/src/pricing_engine.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/pricing_server.dir/src/pricing_engine.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pricing_server.dir/src/pricing_engine.cpp.o -MF CMakeFiles/pricing_server.dir/src/pricing_engine.cpp.o.d -o CMakeFiles/pricing_server.dir/src/pricing_engine.cpp.o -c /mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/src/pricing_engine.cpp
 
 CMakeFiles/pricing_server.dir/src/pricing_engine.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/pricing_server.dir/src/pricing_engine.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Projects/pricing-engine/src/pricing_engine.cpp > CMakeFiles/pricing_server.dir/src/pricing_engine.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/src/pricing_engine.cpp > CMakeFiles/pricing_server.dir/src/pricing_engine.cpp.i
 
 CMakeFiles/pricing_server.dir/src/pricing_engine.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/pricing_server.dir/src/pricing_engine.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Projects/pricing-engine/src/pricing_engine.cpp -o CMakeFiles/pricing_server.dir/src/pricing_engine.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/src/pricing_engine.cpp -o CMakeFiles/pricing_server.dir/src/pricing_engine.cpp.s
 
 CMakeFiles/pricing_server.dir/generated/pricing.pb.cc.o: CMakeFiles/pricing_server.dir/flags.make
 CMakeFiles/pricing_server.dir/generated/pricing.pb.cc.o: generated/pricing.pb.cc
 CMakeFiles/pricing_server.dir/generated/pricing.pb.cc.o: CMakeFiles/pricing_server.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Projects/pricing-engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/pricing_server.dir/generated/pricing.pb.cc.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pricing_server.dir/generated/pricing.pb.cc.o -MF CMakeFiles/pricing_server.dir/generated/pricing.pb.cc.o.d -o CMakeFiles/pricing_server.dir/generated/pricing.pb.cc.o -c /mnt/c/Projects/pricing-engine/build/generated/pricing.pb.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/pricing_server.dir/generated/pricing.pb.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pricing_server.dir/generated/pricing.pb.cc.o -MF CMakeFiles/pricing_server.dir/generated/pricing.pb.cc.o.d -o CMakeFiles/pricing_server.dir/generated/pricing.pb.cc.o -c /mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/build/generated/pricing.pb.cc
 
 CMakeFiles/pricing_server.dir/generated/pricing.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/pricing_server.dir/generated/pricing.pb.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Projects/pricing-engine/build/generated/pricing.pb.cc > CMakeFiles/pricing_server.dir/generated/pricing.pb.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/build/generated/pricing.pb.cc > CMakeFiles/pricing_server.dir/generated/pricing.pb.cc.i
 
 CMakeFiles/pricing_server.dir/generated/pricing.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/pricing_server.dir/generated/pricing.pb.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Projects/pricing-engine/build/generated/pricing.pb.cc -o CMakeFiles/pricing_server.dir/generated/pricing.pb.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/build/generated/pricing.pb.cc -o CMakeFiles/pricing_server.dir/generated/pricing.pb.cc.s
 
 CMakeFiles/pricing_server.dir/generated/pricing.grpc.pb.cc.o: CMakeFiles/pricing_server.dir/flags.make
 CMakeFiles/pricing_server.dir/generated/pricing.grpc.pb.cc.o: generated/pricing.grpc.pb.cc
 CMakeFiles/pricing_server.dir/generated/pricing.grpc.pb.cc.o: CMakeFiles/pricing_server.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Projects/pricing-engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/pricing_server.dir/generated/pricing.grpc.pb.cc.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pricing_server.dir/generated/pricing.grpc.pb.cc.o -MF CMakeFiles/pricing_server.dir/generated/pricing.grpc.pb.cc.o.d -o CMakeFiles/pricing_server.dir/generated/pricing.grpc.pb.cc.o -c /mnt/c/Projects/pricing-engine/build/generated/pricing.grpc.pb.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/pricing_server.dir/generated/pricing.grpc.pb.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pricing_server.dir/generated/pricing.grpc.pb.cc.o -MF CMakeFiles/pricing_server.dir/generated/pricing.grpc.pb.cc.o.d -o CMakeFiles/pricing_server.dir/generated/pricing.grpc.pb.cc.o -c /mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/build/generated/pricing.grpc.pb.cc
 
 CMakeFiles/pricing_server.dir/generated/pricing.grpc.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/pricing_server.dir/generated/pricing.grpc.pb.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Projects/pricing-engine/build/generated/pricing.grpc.pb.cc > CMakeFiles/pricing_server.dir/generated/pricing.grpc.pb.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/build/generated/pricing.grpc.pb.cc > CMakeFiles/pricing_server.dir/generated/pricing.grpc.pb.cc.i
 
 CMakeFiles/pricing_server.dir/generated/pricing.grpc.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/pricing_server.dir/generated/pricing.grpc.pb.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Projects/pricing-engine/build/generated/pricing.grpc.pb.cc -o CMakeFiles/pricing_server.dir/generated/pricing.grpc.pb.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/build/generated/pricing.grpc.pb.cc -o CMakeFiles/pricing_server.dir/generated/pricing.grpc.pb.cc.s
 
 # Object files for target pricing_server
 pricing_server_OBJECTS = \
@@ -159,7 +159,7 @@ pricing_server: CMakeFiles/pricing_server.dir/build.make
 pricing_server: CMakeFiles/pricing_server.dir/compiler_depend.ts
 pricing_server: /usr/lib/x86_64-linux-gnu/libprotobuf.so
 pricing_server: CMakeFiles/pricing_server.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/mnt/c/Projects/pricing-engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable pricing_server"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable pricing_server"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/pricing_server.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -174,6 +174,6 @@ CMakeFiles/pricing_server.dir/depend: generated/pricing.grpc.pb.cc
 CMakeFiles/pricing_server.dir/depend: generated/pricing.grpc.pb.h
 CMakeFiles/pricing_server.dir/depend: generated/pricing.pb.cc
 CMakeFiles/pricing_server.dir/depend: generated/pricing.pb.h
-	cd /mnt/c/Projects/pricing-engine/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /mnt/c/Projects/pricing-engine /mnt/c/Projects/pricing-engine /mnt/c/Projects/pricing-engine/build /mnt/c/Projects/pricing-engine/build /mnt/c/Projects/pricing-engine/build/CMakeFiles/pricing_server.dir/DependInfo.cmake "--color=$(COLOR)" pricing_server
+	cd /mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine /mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine /mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/build /mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/build /mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/build/CMakeFiles/pricing_server.dir/DependInfo.cmake "--color=$(COLOR)" pricing_server
 .PHONY : CMakeFiles/pricing_server.dir/depend
 

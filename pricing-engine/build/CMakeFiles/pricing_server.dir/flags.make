@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/mnt/c/Projects/pricing-engine/build/generated
+CXX_INCLUDES = -I/mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/build/generated
 
 CXX_FLAGS = -std=gnu++20
 

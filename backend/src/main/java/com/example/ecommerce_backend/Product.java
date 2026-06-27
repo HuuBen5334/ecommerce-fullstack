@@ -19,15 +19,29 @@ public class Product {
     @Column(nullable = false)
     private Integer stockQuantity;
 
+    @Column(length = 1000)
+    private String description;
+
+    private String imageUrl;
+
     @Version
     private Long version;
 
     public Product() {}
-    // Constructor
+
     public Product(String name, BigDecimal price, Integer stockQuantity) {
         this.name = name;
         this.price = price;
         this.stockQuantity = stockQuantity;
+    }
+
+    public Product(String name, BigDecimal price, Integer stockQuantity,
+                   String description, String imageUrl) {
+        this.name = name;
+        this.price = price;
+        this.stockQuantity = stockQuantity;
+        this.description = description;
+        this.imageUrl = imageUrl;
     }
 
     // Getters
@@ -47,6 +61,10 @@ public class Product {
     public String getName() {
         return name;
     }
+
+    public String getDescription() { return description; }
+
+    public String getImageUrl() { return imageUrl; }
 
     public Long getVersion() {
         return version;

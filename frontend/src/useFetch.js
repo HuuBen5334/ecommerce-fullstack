@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 export function useFetch(url) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [tick, setTick] = useState(0);                    
 
   useEffect(() => {
     fetch(url)
@@ -19,7 +20,9 @@ export function useFetch(url) {
         setError(err.message);
         setLoading(false);
       });
-  }, [url]);
+  }, [url, tick]);                                        // ← tick added
 
-  return { data, loading, error };
+  const refetch = useCallback(() => setTick((t) => t + 1), []); // ← new
+
+  return { data, loading, error, refetch };               // ← refetch exposed
 }

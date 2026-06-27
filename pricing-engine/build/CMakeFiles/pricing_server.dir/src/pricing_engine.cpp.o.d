@@ -1,7 +1,7 @@
 CMakeFiles/pricing_server.dir/src/pricing_engine.cpp.o: \
- /mnt/c/Projects/pricing-engine/src/pricing_engine.cpp \
+ /mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/src/pricing_engine.cpp \
  /usr/include/stdc-predef.h \
- /mnt/c/Projects/pricing-engine/src/pricing_engine.h \
+ /mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/src/pricing_engine.h \
  /usr/include/c++/15/cstdint \
  /usr/include/x86_64-linux-gnu/c++/15/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/15/bits/os_defines.h \

@@ -1,7 +1,7 @@
 CMakeFiles/pricing_server.dir/generated/pricing.grpc.pb.cc.o: \
- /mnt/c/Projects/pricing-engine/build/generated/pricing.grpc.pb.cc \
+ /mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/build/generated/pricing.grpc.pb.cc \
  /usr/include/stdc-predef.h \
- /mnt/c/Projects/pricing-engine/build/generated/pricing.pb.h \
+ /mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/build/generated/pricing.pb.h \
  /usr/include/c++/15/limits \
  /usr/include/x86_64-linux-gnu/c++/15/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/15/bits/os_defines.h \
@@ -286,7 +286,7 @@ CMakeFiles/pricing_server.dir/generated/pricing.grpc.pb.cc.o: \
  /usr/include/c++/15/bits/std_function.h /usr/include/c++/15/array \
  /usr/include/google/protobuf/map_type_handler.h \
  /usr/include/google/protobuf/extension_set.h /usr/include/c++/15/cassert \
- /mnt/c/Projects/pricing-engine/build/generated/pricing.grpc.pb.h \
+ /mnt/c/Projects/combine-ecommerce-fullstk/ecommerce-fullstack/pricing-engine/build/generated/pricing.grpc.pb.h \
  /usr/include/grpcpp/generic/async_generic_service.h \
  /usr/include/grpc/impl/codegen/port_platform.h \
  /usr/include/linux/version.h \
