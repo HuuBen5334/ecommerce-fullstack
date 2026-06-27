@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package pricing;
+
+service PricingService {
+  rpc GetPrice       (PriceRequest)   returns (PriceResponse);
+  rpc UpdateDiscount (DiscountUpdate) returns (DiscountAck);
+}
+
+message PriceRequest {
+  int64  product_id     = 1;
+  int32  quantity       = 2;
+  double base_price     = 3;  // product's current list price
+  int32  stock_quantity = 4;  // current stock, used for surge logic
+}
+
+message PriceResponse {
+  double computed_price = 1;  // final per-unit price
+  double discount_rate  = 2;  // e.g. 0.10 for 10% off
+  string reason         = 3;  // human-readable explanation
+}
+
+message DiscountUpdate {
+  int64  product_id    = 1;
+  double discount_rate = 2;  // 0.0 to remove override
+}
+
+message DiscountAck {
+  bool success = 1;
+}

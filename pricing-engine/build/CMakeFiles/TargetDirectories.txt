@@ -1,0 +1,3 @@
+/mnt/c/Projects/pricing-engine/build/CMakeFiles/pricing_server.dir
+/mnt/c/Projects/pricing-engine/build/CMakeFiles/edit_cache.dir
+/mnt/c/Projects/pricing-engine/build/CMakeFiles/rebuild_cache.dir
