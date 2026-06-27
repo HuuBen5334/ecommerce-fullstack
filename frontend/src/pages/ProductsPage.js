@@ -19,6 +19,7 @@ const ProductRow = memo(function ProductRow({ product, onReplenish, replenishing
     <tr>
       <td>{product.id}</td>
       <td>{product.name}</td>
+      <td>{product.category}</td>
       <td>${product.price}</td>
       <td>{product.stockQuantity}</td>
       <td>
@@ -62,6 +63,7 @@ export default function ProductsPage() {
           <tr>
             <th>ID</th>
             <th>Name</th>
+            <th>Category</th>
             <th>Price</th>
             <th>Stock</th>
             <th></th>

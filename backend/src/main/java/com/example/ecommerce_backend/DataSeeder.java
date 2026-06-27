@@ -11,19 +11,30 @@ import java.util.List;
 public class DataSeeder implements CommandLineRunner {
 
     private final ProductRepository productRepository;
+    private final UserRepository userRepository;
 
-    public DataSeeder(ProductRepository productRepository) {
+    public DataSeeder(ProductRepository productRepository, UserRepository userRepository) {
         this.productRepository = productRepository;
+        this.userRepository = userRepository;
     }
 
     @Override
     public void run(String... args) {
 
+        if (userRepository.count() == 0) {
+            userRepository.saveAll(List.of(
+                new User("Bob Stewart",  "bob.stewart@example.com"),
+                new User("Theresa May",  "theresa.may@example.com"),
+                new User("Ben Button",   "ben.button@example.com")
+            ));
+            System.out.println("Seeded 3 default users.");
+        }
+
         if (productRepository.count() > 0) return;
 
         RestTemplate rest = new RestTemplate();
         DummyJsonResponse response = rest.getForObject(
-            "https://dummyjson.com/products?limit=30", DummyJsonResponse.class
+            "https://dummyjson.com/products?limit=0", DummyJsonResponse.class
         );
 
         if (response == null || response.products() == null) return;
@@ -34,7 +45,8 @@ public class DataSeeder implements CommandLineRunner {
                 BigDecimal.valueOf(p.price()).setScale(2, java.math.RoundingMode.HALF_UP),
                 p.stock(),
                 p.description(),
-                p.thumbnail()
+                p.thumbnail(),
+                p.category()
             ))
             .toList();
 
@@ -43,5 +55,6 @@ public class DataSeeder implements CommandLineRunner {
     }
 
     record DummyJsonResponse(List<DummyProduct> products) {}
-    record DummyProduct(String title, double price, int stock, String description, String thumbnail) {}
+    record DummyProduct(String title, double price, int stock,
+                        String description, String thumbnail, String category) {}
 }

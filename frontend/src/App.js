@@ -18,19 +18,25 @@ export default function App() {
   const { data: products, refetch } = useFetch("/products");
   const { data: users }             = useFetch("/users");
   const productsRef = useRef(products);
+  const usersRef    = useRef(users);
 
   useEffect(() => { productsRef.current = products; }, [products]);
+  useEffect(() => { usersRef.current    = users; },    [users]);
 
   useEffect(() => {
     if (!simulating) return;
 
     const id = setInterval(async () => {
-      const inStock = productsRef.current.filter((p) => p.stockQuantity > 0);
-      if (inStock.length === 0) { setSimulating(false); return; }
+      const inStock     = productsRef.current.filter((p) => p.stockQuantity > 0);
+      const activeUsers = usersRef.current;
+      if (inStock.length === 0 || activeUsers.length === 0) { setSimulating(false); return; }
 
-      const p = inStock[Math.floor(Math.random() * inStock.length)];
+      const p      = inStock[Math.floor(Math.random() * inStock.length)];
+      const userId = selectedUserId === 0
+        ? activeUsers[Math.floor(Math.random() * activeUsers.length)].id
+        : selectedUserId;
       try {
-        await placeOrder(p.id, selectedUserId, 1);
+        await placeOrder(p.id, userId, 1);
         refetch();
       } catch (e) {
         console.error(e);
@@ -56,6 +62,7 @@ export default function App() {
             onChange={(e) => setSelectedUserId(Number(e.target.value))}
             className="user-select"
           >
+            <option value={0}>🎲 Random User</option>
             {users.map((u) => (
               <option key={u.id} value={u.id}>{u.name}</option>
             ))}
@@ -83,11 +90,12 @@ export default function App() {
           <Route path="/"           element={<HomePage />} />
           <Route path="/products"   element={<ProductsPage />} />
           <Route path="/users"      element={<UsersPage />} />
-          <Route path="/orders"     element={<OrdersPage selectedUserId={selectedUserId} />} />
+          <Route path="/orders"     element={<OrdersPage selectedUserId={selectedUserId} users={users} />} />
           <Route path="/marketplace" element={
             <MarketplacePage
               selectedUserId={selectedUserId}
               products={products}
+              users={users}
               refetch={refetch}
             />}
           />

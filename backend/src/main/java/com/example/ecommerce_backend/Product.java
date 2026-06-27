@@ -24,6 +24,8 @@ public class Product {
 
     private String imageUrl;
 
+    private String category;
+
     @Version
     private Long version;
 
@@ -36,12 +38,13 @@ public class Product {
     }
 
     public Product(String name, BigDecimal price, Integer stockQuantity,
-                   String description, String imageUrl) {
+                   String description, String imageUrl, String category) {
         this.name = name;
         this.price = price;
         this.stockQuantity = stockQuantity;
         this.description = description;
         this.imageUrl = imageUrl;
+        this.category = category;
     }
 
     // Getters
@@ -65,6 +68,8 @@ public class Product {
     public String getDescription() { return description; }
 
     public String getImageUrl() { return imageUrl; }
+
+    public String getCategory() { return category; }
 
     public Long getVersion() {
         return version;
