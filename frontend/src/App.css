@@ -941,14 +941,14 @@ tbody tr:hover {
 
 /* Secondary modal button (Buy Now) */
 .modal-buy--secondary {
-  background: transparent;
-  color: #475569;
+  background: blue;
+  color: white;
   border: 1px solid #e2e8f0;
   margin-top: -4px;
 }
 
 .modal-buy--secondary:hover:not(:disabled) {
-  background: #f8fafc;
+  background: #334155;
 }
 
 /* Notifications */
