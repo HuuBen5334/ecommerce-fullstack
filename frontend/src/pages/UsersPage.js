@@ -1,5 +1,4 @@
 import { useState, memo } from "react";
-import { useFetch } from "../useFetch";
 
 const UserRow = memo(function UserRow({ user }) {
   return (
@@ -11,8 +10,7 @@ const UserRow = memo(function UserRow({ user }) {
   );
 });
 
-export default function UsersPage() {
-  const { data: users, error, refetch } = useFetch("/users");
+export default function UsersPage({ users = [], refetch }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [creating, setCreating] = useState(false);
@@ -38,8 +36,6 @@ export default function UsersPage() {
       setCreating(false);
     }
   }
-
-  if (error) return <p>Error: {error}</p>;
 
   return (
     <div className="page">

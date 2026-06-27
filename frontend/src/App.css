@@ -145,6 +145,85 @@ body {
   margin: 32px 0 16px;
 }
 
+/* Guide */
+.guide {
+  margin-top: 48px;
+}
+
+.guide-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+
+.guide-subtitle {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 32px;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.guide-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.guide-step {
+  display: flex;
+  gap: 20px;
+  padding: 24px 0;
+  border-top: 1px solid #f1f5f9;
+}
+
+.guide-step:last-child {
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.guide-step-number {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  background: #0f172a;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+.guide-step-body h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 6px;
+}
+
+.guide-step-body p {
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.guide-link {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+.guide-link:hover {
+  text-decoration: underline;
+}
+
 /* Table */
 table {
   width: 100%;
@@ -349,6 +428,43 @@ tbody tr:hover {
 
 .cat-btn--active .cat-count {
   background: rgba(255,255,255,0.2);
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 32px;
+  padding-bottom: 40px;
+}
+
+.page-btn {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 7px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #0f172a;
+  cursor: pointer;
+}
+
+.page-btn:hover:not(:disabled) {
+  background: #f1f5f9;
+}
+
+.page-btn:disabled {
+  color: #cbd5e1;
+  cursor: default;
+}
+
+.page-info {
+  font-size: 13px;
+  color: #64748b;
+  min-width: 100px;
+  text-align: center;
 }
 
 /* Marketplace */

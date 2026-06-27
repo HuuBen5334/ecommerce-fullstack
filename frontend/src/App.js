@@ -1,4 +1,4 @@
-import { lazy, Suspense, useState, useEffect, useRef } from "react";
+import { lazy, Suspense, useState, useEffect, useRef, useMemo } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { useFetch } from "./useFetch";
 import { placeOrder } from "./api";
@@ -15,10 +15,16 @@ export default function App() {
   const [simulating, setSimulating]         = useState(false);
   const [speed, setSpeed]                   = useState(1000);
 
-  const { data: products, refetch } = useFetch("/products");
-  const { data: users }             = useFetch("/users");
+  const { data: products, refetch }              = useFetch("/products");
+  const { data: users,    refetch: refetchUsers } = useFetch("/users");
+  const { data: orders,   refetch: refetchOrders } = useFetch("/orders");
   const productsRef = useRef(products);
   const usersRef    = useRef(users);
+
+  // O(1) user lookup by id — shared across all pages
+  const usersMap = useMemo(() =>
+    new Map(users.map((u) => [u.id, u])),
+  [users]);
 
   useEffect(() => { productsRef.current = products; }, [products]);
   useEffect(() => { usersRef.current    = users; },    [users]);
@@ -87,10 +93,10 @@ export default function App() {
       </header>
       <Suspense fallback={<p>Loading...</p>}>
         <Routes>
-          <Route path="/"           element={<HomePage />} />
-          <Route path="/products"   element={<ProductsPage />} />
-          <Route path="/users"      element={<UsersPage />} />
-          <Route path="/orders"     element={<OrdersPage selectedUserId={selectedUserId} users={users} />} />
+          <Route path="/"           element={<HomePage products={products} users={users} orders={orders} />} />
+          <Route path="/products"   element={<ProductsPage products={products} refetch={refetch} />} />
+          <Route path="/users"      element={<UsersPage users={users} refetch={refetchUsers} />} />
+          <Route path="/orders"     element={<OrdersPage selectedUserId={selectedUserId} users={users} orders={orders} refetch={refetchOrders} />} />
           <Route path="/marketplace" element={
             <MarketplacePage
               selectedUserId={selectedUserId}

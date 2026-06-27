@@ -1,5 +1,4 @@
 import { useState, memo } from "react";
-import { useFetch } from "../useFetch";
 
 async function replenish(product) {
   const res = await fetch(`/products/${product.id}`, {
@@ -37,8 +36,7 @@ const ProductRow = memo(function ProductRow({ product, onReplenish, replenishing
   );
 });
 
-export default function ProductsPage() {
-  const { data: products, error, refetch } = useFetch("/products");
+export default function ProductsPage({ products = [], refetch }) {
   const [replenishing, setReplenishing] = useState(null);
 
   async function handleReplenish(product) {
@@ -52,8 +50,6 @@ export default function ProductsPage() {
       setReplenishing(null);
     }
   }
-
-  if (error) return <p>Error: {error}</p>;
 
   return (
     <div className="page">

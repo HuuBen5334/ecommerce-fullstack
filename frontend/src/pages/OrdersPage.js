@@ -1,5 +1,3 @@
-// OrdersPage.js
-import { useFetch } from "../useFetch";
 import { useOrderNotifications } from "../useOrderNotifications";
 import { memo } from "react";
 
@@ -24,10 +22,8 @@ const OrderRow = memo(function OrderRow({ order }) {
   );
 });
 
-export default function OrdersPage({ selectedUserId = 1, users = [] }) {
-  const { data: orders, error } = useFetch("/orders");
+export default function OrdersPage({ selectedUserId = 1, users = [], orders = [] }) {
   const notifications = useOrderNotifications(selectedUserId, users);
-  if (error) return <p>Error: {error}</p>;
 
   return (
     <div className="page orders-page">
