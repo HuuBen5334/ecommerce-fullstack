@@ -337,6 +337,29 @@ tbody tr:hover {
   cursor: default;
 }
 
+.btn-replenish {
+  margin-top: auto;
+  padding: 8px;
+  background: #16a34a;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  width: 100%;
+}
+
+.btn-replenish:hover:not(:disabled) {
+  background: #15803d;
+}
+
+.btn-replenish:disabled {
+  background: #e2e8f0;
+  color: #94a3b8;
+  cursor: default;
+}
+
 /* Product modal */
 .modal-backdrop {
   position: fixed;

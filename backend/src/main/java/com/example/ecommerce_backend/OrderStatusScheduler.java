@@ -3,7 +3,10 @@ package com.example.ecommerce_backend;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Component
 public class OrderStatusScheduler {
@@ -17,17 +20,16 @@ public class OrderStatusScheduler {
         this.notificationService = notificationService;
     }
 
-    // Fetch all three lists before writing so each order advances exactly one
-    // step per tick regardless of how many orders are in flight.
     @Scheduled(fixedDelay = 8000)
     public void advanceOrderStatuses() {
-        List<ProductOrder> pending   = orderRepository.findByStatus(OrderStatus.PENDING);
-        List<ProductOrder> confirmed = orderRepository.findByStatus(OrderStatus.CONFIRMED);
-        List<ProductOrder> shipped   = orderRepository.findByStatus(OrderStatus.SHIPPED);
+        Map<OrderStatus, List<ProductOrder>> byStatus = orderRepository
+                .findByStatusIn(List.of(OrderStatus.PENDING, OrderStatus.CONFIRMED, OrderStatus.SHIPPED))
+                .stream()
+                .collect(Collectors.groupingBy(ProductOrder::getStatus));
 
-        advance(pending,   OrderStatus.CONFIRMED);
-        advance(confirmed, OrderStatus.SHIPPED);
-        advance(shipped,   OrderStatus.DELIVERED);
+        advance(byStatus.getOrDefault(OrderStatus.PENDING,   Collections.emptyList()), OrderStatus.CONFIRMED);
+        advance(byStatus.getOrDefault(OrderStatus.CONFIRMED, Collections.emptyList()), OrderStatus.SHIPPED);
+        advance(byStatus.getOrDefault(OrderStatus.SHIPPED,   Collections.emptyList()), OrderStatus.DELIVERED);
     }
 
     private void advance(List<ProductOrder> orders, OrderStatus next) {

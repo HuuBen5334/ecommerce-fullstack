@@ -32,7 +32,7 @@ function ProductModal({ product, onClose, onBuy, buying }) {
 }
 
 export default function MarketplacePage({ selectedUserId, products, refetch }) {
-  const [buying, setBuying]   = useState(null);
+  const [buying, setBuying]     = useState(null);
   const [expanded, setExpanded] = useState(null);
 
   async function handleBuy(productId) {
