@@ -1,8 +1,8 @@
 import { lazy, Suspense, useState, useCallback, useEffect, useRef, useMemo } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import { useFetch } from "./useFetch";
+import { useFetch } from "./hooks/useFetch";
 import { placeOrder } from "./api";
-import CartDrawer from "./CartDrawer";
+import CartDrawer from "./components/CartDrawer";
 import "./App.css";
 
 const HomePage        = lazy(() => import("./pages/HomePage"));

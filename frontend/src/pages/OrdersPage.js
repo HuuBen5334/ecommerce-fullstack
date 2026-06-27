@@ -1,4 +1,4 @@
-import { useOrderNotifications } from "../useOrderNotifications";
+import { useOrderNotifications } from "../hooks/useOrderNotifications";
 import { memo } from "react";
 
 function formatDate(isoString) {

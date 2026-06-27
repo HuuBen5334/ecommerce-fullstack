@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { placeOrder } from "../api";
-import cartIcon from "../shoppingcart.png";
+import cartIcon from "../assets/shoppingcart.png";
 
 const PAGE_SIZE = 24;
 
