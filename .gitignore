@@ -1,1 +1,21 @@
 CLAUDE.md
+
+# CMake build output — never commit generated build files
+pricing-engine/build/
+
+# Java / Maven
+backend/target/
+*.class
+*.jar
+
+# Node / React
+frontend/node_modules/
+frontend/build/
+
+# Environment
+.env
+*.env.local
+
+# OS
+.DS_Store
+Thumbs.db
