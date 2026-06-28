@@ -1,4 +1,3 @@
-<img width="937" height="460" alt="image" src="https://github.com/user-attachments/assets/9ff83993-992b-4ade-88ee-1ef492823c30" />
 
 ## Project Description
 This is a full-stack e-commerce simulation. You can browse products, place orders manually, or run an automated simulation to stress-test the system in real time.
@@ -15,13 +14,45 @@ Open the Orders page while the simulation is running. The right column shows a l
 
 - **Replenish Stock:**
 When products sell out the simulation stops automatically. Go to the Products page to replenish any out-of-stock item back to 100 units, then resume.
+---
+## 🏗️ Architecture
 
+```mermaid
+flowchart LR
+    subgraph Client["🖥️ React 19 Storefront :3000"]
+        UI[Marketplace + Cart]
+        WS_C[STOMP / SockJS client]
+    end
+
+    subgraph Backend["☕ Spring Boot API :8080"]
+        CTRL[REST Controllers]
+        SVC["ProductOrderService@Retryable + @Transactional"]
+        WS_S[STOMP Broker /topic]
+    end
+
+    subgraph Pricing["⚙️ C++ Pricing Engine :50051"]
+        GRPC["gRPC serverbulk discount + scarcity surge"]
+    end
+
+    DB[("🐘 PostgreSQLoptimistic lock @Version")]
+
+    UI -->|REST /products /orders| CTRL
+    CTRL --> SVC
+    SVC -->|"GetPrice (gRPC)"| GRPC
+    SVC -->|"JPA / Hibernate"| DB
+    SVC -->|push order update| WS_S
+    WS_S -.->|"/topic/orders/user/{id}"| WS_C
+```
+
+Each tier is independently runnable and speaks a purpose-fit protocol: **REST** for the storefront, **gRPC** for low-latency internal pricing calls, and **STOMP-over-WebSocket** for server-pushed order events.
+
+---
 ## Tech Stack
 - **Spring Boot 3.5.14**, Java 21
 - **Spring Data JPA** (Hibernate), **PostgreSQL** (`localhost:5432/ecommerce`, user: `postgres`)
 - **Spring Retry** + **Spring AOP** — `@Retryable` on `placeOrder()` for optimistic lock recovery
 - `spring.jpa.hibernate.ddl-auto=update`, `spring.jpa.open-in-view=false`
-
+---
 ## Running the Project
 
 ### Prerequisites
@@ -54,6 +85,7 @@ locust -f frontend/locustfile.py
 ```
 The locust script resets product 1 stock to 10,000 on test start, then simulates browse, order placement, and CRUD tasks.
 
+---
 ## Design Decisions
 - `app_user` table name — `USER` is a reserved keyword in PostgreSQL
 - `BigDecimal` for all monetary values — floating point is unsuitable for money
