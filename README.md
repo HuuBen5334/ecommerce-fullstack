@@ -14,6 +14,11 @@ Open the Orders page while the simulation is running. The right column shows a l
 
 - **Replenish Stock:**
 When products sell out the simulation stops automatically. Go to the Products page to replenish any out-of-stock item back to 100 units, then resume.
+
+## 🎬 Demo
+
+<img width="1306" alt="E-commerce platform demo" src="https://github.com/user-attachments/assets/1d1935ba-ca4e-4035-9b00-263c9370942f" />
+
 ---
 ## 🏗️ Architecture
 
